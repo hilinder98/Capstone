@@ -127,6 +127,7 @@ str(useabledata)
 
 
 
+
 freqtab <- table(useabledata$stab)
 
 freqtab <- as.data.frame(freqtab)
@@ -143,6 +144,9 @@ missing <- rbind(missing, c('Total', 2188, 2356, 168)) ## shows how
 trumpiest <- useabledata[
     which(useabledata$propR16 >= quantile(useabledata$propR16, .95, names = FALSE, na.rm = TRUE)
           & useabledata$changeinpropR >= quantile(useabledata$changeinpropR, .95, names = FALSE, na.rm = TRUE)),]
+
+
+write.csv(useabledata, "/Users/harrisonlinder/Desktop/capstone research/actual directed work/Capstone/pumavoteshares.csv", row.names = FALSE)
 
 
 
