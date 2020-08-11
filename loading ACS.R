@@ -1,7 +1,7 @@
 library(readr)
-psam_pusa <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/csv_pus(2018)/psam_pusa.csv")
+psam_pusa <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/csv_pus (2018)/psam_pusa.csv")
 
-psam_pusb <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/csv_pus(2018)/psam_pusb.csv")
+psam_pusb <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/csv_pus (2018)/psam_pusb.csv")
 
 acasa18 <- psam_pusa[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
                        'COW', 'HINS4', 'INTP', 'MAR', 'MARHD', 'SEX',
@@ -47,9 +47,6 @@ rm(list = c('acas17', 'acas18'))
 
 acasafter$AFTR <- 1
 
-write.csv(acasafter, "/Users/harrisonlinder/Desktop/capstone research/actual directed work/Capstone/acsafter.csv", row.names = FALSE)
-
-
 ss15pusa <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/csv_pus (2015)/ss15pusa.csv")
 
 ss15pusb <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/csv_pus (2015)/ss15pusb.csv")
@@ -73,10 +70,8 @@ rm(list = c('ss15pusa', 'ss15pusb', 'acasa15', 'acasb15'))
 
 ss16pusa <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/csv_pus (2016)/ss16pusa.csv")
 
-ss16pusa <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/csv_pus (2016)/ss16pusa.csv")
-
-
 ss16pusb <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/csv_pus (2016)/ss16pusb.csv")
+
 
 acasa16 <- ss16pusa[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
                       'COW', 'HINS4', 'INTP', 'MAR', 'MARHD', 'SEX',
@@ -95,13 +90,60 @@ acas16$YEAR <- 2016
 
 rm(list = c('ss16pusa', 'ss16pusb', 'acasa16', 'acasb16'))
 
-acasbefore <- rbind(acas15, acas16)
 
-rm(list = c('acas15', 'acas16'))
 
-acasbefore$AFTR <- 0
 
-write.csv(acasbefore, "/Users/harrisonlinder/Desktop/capstone research/actual directed work/Capstone/acsbefore.csv", row.names = FALSE)
+
+
+ss14pusa <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/csv_pus (2014)/ss14pusa.csv")
+
+ss14pusb <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/csv_pus (2014)/ss14pusb.csv")
+
+
+acasa14 <- ss14pusa[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'HINS4', 'INTP', 'MAR', 'MARHD', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT', 'FHINS4P', 'FPAP')]
+
+acasb14 <- ss14pusb[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'HINS4', 'INTP', 'MAR', 'MARHD', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT', 'FHINS4P', 'FPAP')]
+
+
+acas14 <- rbind(acasa14, acasb14)
+
+acas14$YEAR <- 2014
+
+rm(list = c('ss14pusa', 'ss14pusb', 'acasa14', 'acasb14'))
+
+
+
+ss13pusa <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/csv_pus (2013)/ss13pusa.csv")
+
+ss13pusb <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/csv_pus (2013)/ss13pusb.csv")
+
+
+acasa13 <- ss13pusa[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'HINS4', 'INTP', 'MAR', 'MARHD', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT', 'FHINS4P', 'FPAP')]
+
+acasb13 <- ss13pusb[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'HINS4', 'INTP', 'MAR', 'MARHD', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT', 'FHINS4P', 'FPAP')]
+
+
+acas13 <- rbind(acasa13, acasb13)
+
+acas13$YEAR <- 2013
+
+rm(list = c('ss13pusa', 'ss13pusb', 'acasa13', 'acasb13'))
+
+acsbefore <- rbind(acas13, acas14, acas15, acas16)
+
+rm(list = c('acas13', 'acas14', 'acas15', 'acas16'))
 
 acsall <- rbind(acasbefore, acasafter)
 
@@ -109,11 +151,36 @@ rm(list = c('acasbefore', 'acasafter'))
 
 acsall$statepuma <- paste(acsall$ST, acsall$PUMA, sep = "")
 
-pumavoteshares <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/pumavoteshares.csv")
 
 acswithvotes <- left_join(acsall, pumavoteshares, by = 'statepuma')
 
-write.csv(acswithvotes, "/Users/harrisonlinder/Desktop/capstone research/actual directed work/Capstone/acsvotesharetidy2015to2018.csv", row.names = FALSE)
 
 
-rm(acsall)
+
+
+
+
+
+
+
+
+
+
+
+acs1314 <- rbind(acas13, acas14)
+
+rm(list = c('acas13', 'acas14'))
+
+acs1314$statepuma <- paste(acs1314$ST, acs1314$PUMA, sep = "")
+
+write.csv(acs1314, "/Users/harrisonlinder/Desktop/capstone research/actual directed work/Capstone/acs2013to2014.csv", row.names = FALSE)
+
+pumavoteshares <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/pumavoteshares.csv")
+
+acs1314withvotes <- left_join(acs1314, pumavoteshares, by = 'statepuma')
+
+acsvotesharetidy2015to2018 <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/acsvotesharetidy2015to2018.csv")
+
+acsvoteshartidy2013to2018 <- rbind(acs1314withvotes, acsvotesharetidy2015to2018)
+
+write.csv(acswithvotes, "/Users/harrisonlinder/Desktop/capstone research/actual directed work/Capstone/acsvoteshartidy2013to2018.csv", row.names = FALSE)
