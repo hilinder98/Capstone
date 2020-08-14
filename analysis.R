@@ -203,3 +203,13 @@ x <- felm(data = acswithvotes,
                      weights = acswithvotes$PWGTP)
 
 summary(x)
+
+for(i in 1:20){ 
+        if(is.integer(i/4) == TRUE){
+       x<- i
+        }  
+}
+
+set.seed(1)
+
+sampleacsvotes <-  sample_n(acsvoteshartidy2013to2018, 2000000) 
