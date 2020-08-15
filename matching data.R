@@ -67,7 +67,7 @@ full$AFACT2 <- as.numeric(full$AFACT2)
 
 allinpuma <- aggregate(x = full$AFACT2, by = list('statepuma' = full$statepuma, 'stab' = full$stab), FUN = mean) ## for those observations
 ## where county borders fall completely within PUMA borders, all values of full$AFACT2 = 1 for each PUMA. Therefore
-## the mean of full$AFACT2 for each PUMA must also be 1
+## the mean of full$AFACT2 for each PUMA must also be 1 if it perfectly comprised by its counties
 
 str(allinpuma)
 
