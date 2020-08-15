@@ -173,7 +173,7 @@ write.csv(acsbefore, "acs2013to2016.csv", row.names = FALSE)
 ```
 ## acs 2013 to 2018
 ```{r}
-acsall <- rbind.fill(acasbefore, acasafter)
+acsall <- rbind.fill(acsbefore, acasafter)
 
 rm(list = c('acasbefore', 'acasafter'))
 
