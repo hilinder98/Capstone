@@ -1,0 +1,101 @@
+---
+title: "Analysismeeting2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## removing the duplicate weights which i dont think I need
+
+```{r}
+library(readr)
+acssample <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/acssample2013to2018.csv")
+
+acssample <- acssample[c(1:203, 284:288)]
+
+```
+## adding the statepuma column and matching to vote data
+```{r}
+acssample$statepuma <- paste(acssample$ST, acssample$PUMA, sep = "")
+
+ pumavoteshares <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/pumavoteshares.csv")
+
+acssample <- left_join(acssample, pumavoteshares, by = 'statepuma')
+```
+## useful data transformations
+```{r}
+acssample$PWGTP <- as.numeric(acssample$PWGTP)
+
+acssample$WAGP <- as.numeric(acssample$WAGP)
+
+acssample$WKHP <- as.numeric(acssample$WKHP)
+
+acssample$AGEP <- as.numeric(acssample$AGEP)
+
+acssample$SCHL <- as.factor(acssample$SCHL)
+
+acssample$statepuma <- as.factor(acssample$statepuma)
+
+acssample$WRK <- as.factor(acssample$WRK)
+
+acssample$ESR <- as.factor(acssample$ESR)
+
+acssample$ST <- as.factor(acssample$ST)
+
+acssample$HINS4 <- acssample$HINS4 - 2
+
+acssample$HINS4 <- acssample$HINS4* -1
+
+acssample$Trumpiest <- as.numeric(acssample$propR16 >= quantile(acssample$propR16, .90, names = FALSE, na.rm = TRUE)
+                                     & acssample$changeinpropR >= quantile(acssample$changeinpropR, .90, names = FALSE, na.rm = TRUE))
+
+acssample$ESR <- as.numeric(acssample$ESR)
+
+acssample$EMPLOYED <- ifelse(acssample$ESR==1, 1,
+               ifelse(acssample$ESR==2, 1,
+                      ifelse(acssample$ESR==3, 0,
+                      ifelse(acssample$ESR==4, 1,
+                             ifelse(acssample$ESR==5, 1,
+                                    NA  ))))) ## creates data for employment tests
+
+
+acssample$ESR <- as.factor(acssample$ESR)
+
+acssample$YEAR <- as.factor(acssample$YEAR)
+```
+
+
+## comparing sample reg outputs to 
+
+```{r}
+library(lfe)
+x <- felm(data = acssample,
+                     formula = EMPLOYED ~ Trumpiest*YEAR| statepuma|0| statepuma,
+                     cmethod = 'reghdfe')
+
+summary(x)
+
+```
+
