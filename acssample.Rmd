@@ -92,8 +92,9 @@ acssample$YEAR <- as.factor(acssample$YEAR)
 ```{r}
 library(lfe)
 x <- felm(data = acssample,
-                     formula = EMPLOYED ~ Trumpiest*YEAR| statepuma|0| statepuma,
-                     cmethod = 'reghdfe')
+                     formula = log(WAGP + 1) ~ propR16*YEAR| statepuma|0| statepuma,
+                     cmethod = 'reghdfe',
+          weights = acssample$PWGTP)
 
 summary(x)
 

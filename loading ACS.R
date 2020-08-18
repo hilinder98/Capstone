@@ -74,9 +74,15 @@ ss16pusb <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/
 
 
 acasa16 <- ss16pusa[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
-                      'COW', 'HINS4', 'INTP', 'MAR', 'MARHD', 'SEX',
+                      'COW', 'INTP', 'MAR', 'MARHD', 'SEX',
                       'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
-                      'PERNP', 'PINCP', 'RACWHT', 'FHINS4P', 'FPAP')]
+                      'PERNP', 'PINCP', 'RACWHT', 'FHINS4P', 'FPAP','ADJINC','DDRS', 
+                      'DEAR','DEYE', 'DOUT', 'DPHY', 'DRAT', 'DREM', 'ENG', 'FER',
+                      'GCL', 'HINS1', 'HINS2','HINS3','HINS4','HINS5', 'HINS6',
+                      'HINS7', 'MARHT', 'LANX', 'MIL', 'OIP', 'PAP', 'RELP', 'RETP',
+                      'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
+                      'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
+                      'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP')]
 
 acasb16 <- ss16pusb[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
                       'COW', 'HINS4', 'INTP', 'MAR', 'MARHD', 'SEX',

@@ -1,0 +1,317 @@
+---
+title: "Loadingfullacs"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+---
+title: "loading acs comp lab"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+## loading 2018
+
+```{r}
+library(readr)
+library(dplyr)
+psam_pusa <- read_csv("acs2018/psam_pusa.csv")
+
+
+psam_pusa <- psam_pusa[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'INTP', 'MAR', 'MARHT', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT','ADJINC','DDRS', 
+                      'DEAR','DEYE', 'DOUT', 'DPHY', 'DRAT', 'DREM', 'ENG', 'FER',
+                      'GCL', 'HINS1', 'HINS2','HINS3','HINS4','HINS5', 'HINS6',
+                      'HINS7', 'MARHT', 'LANX', 'MIL', 'OIP', 'PAP', 'RELP', 'RETP',
+                      'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
+                      'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
+                      'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP', "DIS", 'VPS')]
+
+psam_pusb <- read_csv("acs2018/psam_pusb.csv")
+
+
+psam_pusb <- psam_pusb[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'INTP', 'MAR', 'MARHT', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT','ADJINC','DDRS', 
+                      'DEAR','DEYE', 'DOUT', 'DPHY', 'DRAT', 'DREM', 'ENG', 'FER',
+                      'GCL', 'HINS1', 'HINS2','HINS3','HINS4','HINS5', 'HINS6',
+                      'HINS7', 'MARHT', 'LANX', 'MIL', 'OIP', 'PAP', 'RELP', 'RETP',
+                      'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
+                      'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
+                      'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP', "DIS", 'VPS')]
+acas18 <- rbind(acasa18, acasb18)
+
+
+acas18$YEAR <- 2018
+
+rm(list = c('acasa18', 'acasb18', 'psam_pusa', 'psam_pusb'))
+```
+## loading 2017
+
+```{r}
+psam_pusa17 <- read_csv("acs2017/psam_pusa.csv")
+
+
+psam_pusa17 <- psam_pusa17[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'INTP', 'MAR', 'MARHT', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT','ADJINC','DDRS', 
+                      'DEAR','DEYE', 'DOUT', 'DPHY', 'DRAT', 'DREM', 'ENG', 'FER',
+                      'GCL', 'HINS1', 'HINS2','HINS3','HINS4','HINS5', 'HINS6',
+                      'HINS7', 'MARHT', 'LANX', 'MIL', 'OIP', 'PAP', 'RELP', 'RETP',
+                      'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
+                      'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
+                      'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP', "DIS", 'VPS')]
+
+psam_pusb17 <- read_csv("acs2017/psam_pusb.csv")
+
+psam_pusb17 <- psam_pusb17[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'INTP', 'MAR', 'MARHT', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT','ADJINC','DDRS', 
+                      'DEAR','DEYE', 'DOUT', 'DPHY', 'DRAT', 'DREM', 'ENG', 'FER',
+                      'GCL', 'HINS1', 'HINS2','HINS3','HINS4','HINS5', 'HINS6',
+                      'HINS7', 'MARHT', 'LANX', 'MIL', 'OIP', 'PAP', 'RELP', 'RETP',
+                      'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
+                      'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
+                      'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP', "DIS", 'VPS')]
+
+
+acas17 <- rbind(psam_pusa17, psam_pusb17)
+
+acas17$YEAR <- 2017
+
+rm(list = c('psam_pusa17', 'psam_pusb17'))
+```
+
+## ACS after
+
+```{r}
+acasafter <- rbind(acas17, acas18)
+
+rm(list = c('acas17', 'acas18'))
+
+acasafter$AFTR <- 1
+
+write.csv(acasafter,file =  "acs2017to2018.csv", row.names = FALSE)
+
+```
+## loading 2016
+```{r}
+ss16pusa <- read_csv("acs2016/ss16pusa.csv")
+
+
+ss16pusa <- ss16pusa[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'INTP', 'MAR', 'MARHT', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT','ADJINC','DDRS', 
+                      'DEAR','DEYE', 'DOUT', 'DPHY', 'DRAT', 'DREM', 'ENG', 'FER',
+                      'GCL', 'HINS1', 'HINS2','HINS3','HINS4','HINS5', 'HINS6',
+                      'HINS7', 'MARHT', 'LANX', 'MIL', 'OIP', 'PAP', 'RELP', 'RETP',
+                      'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
+                      'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
+                      'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP', "DIS", 'VPS')]
+
+ss16pusb <- read_csv("acs2016/ss16pusb.csv")
+
+
+ss16pusb <- ss16pusb[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'INTP', 'MAR', 'MARHT', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT','ADJINC','DDRS', 
+                      'DEAR','DEYE', 'DOUT', 'DPHY', 'DRAT', 'DREM', 'ENG', 'FER',
+                      'GCL', 'HINS1', 'HINS2','HINS3','HINS4','HINS5', 'HINS6',
+                      'HINS7', 'MARHT', 'LANX', 'MIL', 'OIP', 'PAP', 'RELP', 'RETP',
+                      'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
+                      'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
+                      'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP', "DIS", 'VPS')]
+
+acas16 <- rbind(ss16pusa, ss16pusb)
+
+acas16$YEAR <- 2016
+
+rm(list = c('ss16pusa', 'ss16pusb'))
+```
+## loading 2015
+```{r}
+ss15pusa <- read_csv("acs2015/ss15pusa.csv")
+
+
+
+ss15pusa <- ss15pusa[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'INTP', 'MAR', 'MARHT', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT','ADJINC','DDRS', 
+                      'DEAR','DEYE', 'DOUT', 'DPHY', 'DRAT', 'DREM', 'ENG', 'FER',
+                      'GCL', 'HINS1', 'HINS2','HINS3','HINS4','HINS5', 'HINS6',
+                      'HINS7', 'MARHT', 'LANX', 'MIL', 'OIP', 'PAP', 'RELP', 'RETP',
+                      'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
+                      'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
+                      'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP', "DIS", 'VPS')]
+
+ss15pusb <- read_csv("acs2015/ss15pusb.csv")
+
+ss15pusb <- ss15pusb[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'INTP', 'MAR', 'MARHT', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT','ADJINC','DDRS', 
+                      'DEAR','DEYE', 'DOUT', 'DPHY', 'DRAT', 'DREM', 'ENG', 'FER',
+                      'GCL', 'HINS1', 'HINS2','HINS3','HINS4','HINS5', 'HINS6',
+                      'HINS7', 'MARHT', 'LANX', 'MIL', 'OIP', 'PAP', 'RELP', 'RETP',
+                      'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
+                      'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
+                      'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP', "DIS", 'VPS')]
+
+acas15 <- rbind(ss15pusa, ss15pusb)
+
+acas15$YEAR <- 2015
+
+rm(list = c('ss15pusa', 'ss15pusb'))
+```
+## loading acs 2014
+```{r}
+ss14pusa <- read_csv("acs2014/ss14pusa.csv")
+
+ss14pusa <- ss14pusa[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'INTP', 'MAR', 'MARHT', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT','ADJINC','DDRS', 
+                      'DEAR','DEYE', 'DOUT', 'DPHY', 'DRAT', 'DREM', 'ENG', 'FER',
+                      'GCL', 'HINS1', 'HINS2','HINS3','HINS4','HINS5', 'HINS6',
+                      'HINS7', 'MARHT', 'LANX', 'MIL', 'OIP', 'PAP', 'RELP', 'RETP',
+                      'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
+                      'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
+                      'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP', "DIS", 'VPS')]
+
+ss14pusb <- read_csv("acs2014/ss14pusb.csv")
+
+ss14pusb <- ss14pusb[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'INTP', 'MAR', 'MARHT', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT','ADJINC','DDRS', 
+                      'DEAR','DEYE', 'DOUT', 'DPHY', 'DRAT', 'DREM', 'ENG', 'FER',
+                      'GCL', 'HINS1', 'HINS2','HINS3','HINS4','HINS5', 'HINS6',
+                      'HINS7', 'MARHT', 'LANX', 'MIL', 'OIP', 'PAP', 'RELP', 'RETP',
+                      'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
+                      'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
+                      'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP', "DIS", 'VPS')]
+
+acas14 <- rbind(ss14pusa, ss14pusb)
+
+acas14$YEAR <- 2014
+
+rm(list = c('ss14pusa', 'ss14pusb'))
+```
+## loading 2013
+```{r}
+ss13pusa <- read_csv("acs2013/ss13pusa.csv")
+
+
+ss13pusa <- ss13pusa[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'INTP', 'MAR', 'MARHT', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT','ADJINC','DDRS', 
+                      'DEAR','DEYE', 'DOUT', 'DPHY', 'DRAT', 'DREM', 'ENG', 'FER',
+                      'GCL', 'HINS1', 'HINS2','HINS3','HINS4','HINS5', 'HINS6',
+                      'HINS7', 'MARHT', 'LANX', 'MIL', 'OIP', 'PAP', 'RELP', 'RETP',
+                      'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
+                      'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
+                      'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP', "DIS", 'VPS')]
+
+ss13pusb <- read_csv("acs2013/ss13pusb.csv")
+
+ss13pusb <- ss13pusb[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
+                      'COW', 'INTP', 'MAR', 'MARHT', 'SEX',
+                      'SCHL', 'WAGP', 'WKHP', 'WKL','WKW','WRK', 'ESR',
+                      'PERNP', 'PINCP', 'RACWHT','ADJINC','DDRS', 
+                      'DEAR','DEYE', 'DOUT', 'DPHY', 'DRAT', 'DREM', 'ENG', 'FER',
+                      'GCL', 'HINS1', 'HINS2','HINS3','HINS4','HINS5', 'HINS6',
+                      'HINS7', 'MARHT', 'LANX', 'MIL', 'OIP', 'PAP', 'RELP', 'RETP',
+                      'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
+                      'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
+                      'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP', "DIS", 'VPS')]
+
+acas13 <- rbind(ss13pusa, ss13pusb)
+
+acas13$YEAR <- 2013
+
+rm(list = c('ss13pusa', 'ss13pusb'))
+```
+## acs 2013 to 2016
+```{r}
+acsbefore <- rbind(acas13, acas14, acas15, acas16)
+
+rm(list = c('acas13', 'acas14', 'acas15', 'acas16'))
+
+acsbefore$AFTR <- 0
+
+```
+
+
+## acssample 2013 to 2018
+```{r}
+acsall <- rbind.fill(acsbefore, acasafter)
+
+rm(list = c('acsbefore', 'acasafter'))
+
+```
+## add vote data
+```{r}
+acsall$statepuma <- paste(acsall$ST, acsall$PUMA, sep = "")
+
+
+acsall <- left_join(acsall, pumavoteshares, by = 'statepuma')
+
+
+saveRDS(acsall, file =  "acs2013to2018withvotedata.rds")
+```
+
