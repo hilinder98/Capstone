@@ -88,12 +88,13 @@ psam_pusb <- psam_pusb[c('SERIALNO', 'ST', 'PUMA', 'PWGTP', 'AGEP', 'CIT',
                       'SEMP', "SSIP", 'SSP', 'ANC', 'ANC1P', 'ESP', 'NWAB', 'NWAV', 'NWLA',
                       'NWLK', 'NWRE', 'FOD1P', 'FOD2P', 'HICOV', 'INDP', 'JWAP', "JWDP", 'MIGPUMA',
                       'MIGSP', 'QTRBIR', 'RAC1P', 'RAC2P', 'RAC3P', 'NAICSP', "DIS", 'VPS')]
-acas18 <- rbind(acasa18, acasb18)
+
+acas18 <- rbind(psam_pusa, psam_pusb)
 
 
 acas18$YEAR <- 2018
 
-rm(list = c('acasa18', 'acasb18', 'psam_pusa', 'psam_pusb'))
+rm(list = c('psam_pusa', 'psam_pusb'))
 ```
 ## loading 2017
 
@@ -308,6 +309,7 @@ rm(list = c('acsbefore', 'acasafter'))
 ```{r}
 acsall$statepuma <- paste(acsall$ST, acsall$PUMA, sep = "")
 
+pumavoteshares <- pumavoteshares <- read_csv("pumavoteshares.csv")
 
 acsall <- left_join(acsall, pumavoteshares, by = 'statepuma')
 
