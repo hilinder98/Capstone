@@ -1,0 +1,55 @@
+---
+title: "Sample data set cleaning"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+acs2013to2018_copy[[paste('pwgtp',1, sep = '')]]
+head(acs2013to2018_copy$PWGTP1)
+head(acs2013to2018_copy[[paste('pwgtp',1, sep = '')]])
+```
+```{r}
+acs2013to2018_copy <- fread("~/Desktop/capstone research/actual directed work/Capstone/acs2013to2018 copy.csv", colClasses = 'character', data.table = FALSE)
+```
+
+
+```{r}
+
+
+ acs2013to2018_copyPWGTP1 <- ifelse(is.na(acs2013to2018_copy$PWGTP1), acs2013to2018_copy$pwgtp1, acs2013to2018_copy$PWGTP1)   
+ 
+for(i in 2:80){
+acs2013to2018_copy[[paste('PWGTP',i, sep = '')]] <- ifelse(is.na(acs2013to2018_copy[[paste('PWGTP',i, sep = '')]]), acs2013to2018_copy[[paste('pwgtp',i, sep = '')]], acs2013to2018_copy[[paste('PWGTP',i, sep = '')]])
+}
+
+acssample <- acs2013to2018_copy[c(1:203, 284:368)]
+ 
+ write.csv(acssample, 'sampleforstata.csv', row.names = FALSE)
+
+
+```
+

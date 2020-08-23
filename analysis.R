@@ -213,3 +213,7 @@ for(i in 1:20){
 set.seed(1)
 
 sampleacsvotes <-  sample_n(acsvoteshartidy2013to2018, 2000000) 
+
+head(acssample[which(acssample$WAGP<50),]['PWGTP'])
+
+

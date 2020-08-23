@@ -33,7 +33,7 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 library(readr)
 acssample <- read_csv("~/Desktop/capstone research/actual directed work/Capstone/acssample2013to2018.csv")
 
-acssample <- acssample[c(1:203, 284:288)]
+acssample <- acssample[c(1:203, 284:388)]
 
 ```
 ## adding the statepuma column and matching to vote data
@@ -91,12 +91,15 @@ acssample$YEAR <- as.factor(acssample$YEAR)
 
 ```{r}
 library(lfe)
-x <- felm(data = acssample,
+reg <- function(y){
+x <- y
+
+stargazer(y, type = 'html', out = paste(y, '.html', sep = ''))
+}
+reg(felm(data = acssample,
                      formula = log(WAGP + 1) ~ propR16*YEAR| statepuma|0| statepuma,
                      cmethod = 'reghdfe',
-          weights = acssample$PWGTP)
-
-summary(x)
+          weights = acssample$PWGTP))
 
 ```
 
